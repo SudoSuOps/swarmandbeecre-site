@@ -373,5 +373,84 @@ if (qsBtn) {
   });
 })();
 
+// ── Contact Form ────────────────────────────────────────
+
+(function initContactForm() {
+  const form = document.getElementById('contact-form-el');
+  if (!form) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('cf-name').value.trim();
+    const email = document.getElementById('cf-email').value.trim();
+    const message = document.getElementById('cf-message').value.trim();
+    const status = document.getElementById('cf-status');
+    const submitBtn = document.getElementById('cf-submit');
+
+    if (!name || !email || !message) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    status.className = 'cf-status hidden';
+
+    try {
+      const res = await fetch('https://swarmandbee.com/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message }),
+      });
+      const data = await res.json();
+
+      if (data.ok) {
+        status.textContent = 'Message sent! We\'ll get back to you within 24 hours.';
+        status.className = 'cf-status success';
+        form.reset();
+      } else {
+        status.textContent = data.error || 'Something went wrong. Try again.';
+        status.className = 'cf-status error';
+      }
+    } catch {
+      status.textContent = 'Network error. Please try again.';
+      status.className = 'cf-status error';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message';
+    }
+  });
+})();
+
+// ── Stripe Checkout ─────────────────────────────────────
+
+(function initStripeCheckout() {
+  document.querySelectorAll('[data-tier]').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const tier = btn.dataset.tier;
+      btn.disabled = true;
+      btn.textContent = 'Redirecting...';
+
+      try {
+        const res = await fetch('https://swarmandbee.com/api/data/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ tier }),
+        });
+        const data = await res.json();
+
+        if (data.ok && data.url) {
+          window.location.href = data.url;
+        } else {
+          alert(data.error || 'Checkout error. Email build@swarmandbee.com for help.');
+          btn.disabled = false;
+          btn.textContent = tier === 'starter' ? 'Subscribe — $49/mo' : 'Subscribe — $299/mo';
+        }
+      } catch {
+        alert('Network error. Email build@swarmandbee.com for help.');
+        btn.disabled = false;
+        btn.textContent = tier === 'starter' ? 'Subscribe — $49/mo' : 'Subscribe — $299/mo';
+      }
+    });
+  });
+})();
+
 loadSkills();
 animateCounters();

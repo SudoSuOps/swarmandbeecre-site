@@ -175,6 +175,8 @@
 
   <!-- ═══ ECOSYSTEM BAR ═══ -->
   <div class="eco-bar">
+    <a href="https://swarmandbee.com">HQ</a>
+    <span class="eco-sep">|</span>
     <a href="https://swarmandbeeroi.com">ROI Thesis</a>
     <span class="eco-sep">|</span>
     <a href="https://swarmandbeecre.com" class="eco-active">CRE Platform</a>
@@ -768,7 +770,7 @@ console.log(`Latency: ${data.latency_ms}ms`);</code></pre>
             <li>Priority inference</li>
             <li>API key dashboard</li>
           </ul>
-          <a href="mailto:build@swarmandbee.com?subject=Starter%20Plan" class="price-btn primary">Start Building</a>
+          <button class="price-btn primary" data-tier="starter">Start Building</button>
         </div>
         <div class="price-card">
           <h3>Pro</h3>
@@ -780,7 +782,7 @@ console.log(`Latency: ${data.latency_ms}ms`);</code></pre>
             <li>Webhook events</li>
             <li>Dedicated support</li>
           </ul>
-          <a href="mailto:build@swarmandbee.com?subject=Pro%20Plan" class="price-btn">Contact Us</a>
+          <button class="price-btn" data-tier="pro">Subscribe</button>
         </div>
       </div>
       <div class="credit-table">
@@ -825,27 +827,45 @@ console.log(`Latency: ${data.latency_ms}ms`);</code></pre>
     </div>
   </section>
 
+
+  <!-- ═══ CONTACT FORM ═══ -->
+  <section id="contact-form" class="contact-section">
+    <div class="section-inner">
+      <h2>Get in Touch</h2>
+      <p class="section-sub">Questions, partnerships, or custom builds. We respond within 24 hours.</p>
+      <form id="contact-form-el" class="contact-form" autocomplete="off">
+        <div class="contact-row">
+          <input type="text" id="cf-name" placeholder="Your name" required>
+          <input type="email" id="cf-email" placeholder="Your email" required>
+        </div>
+        <textarea id="cf-message" placeholder="Your message..." rows="4" required></textarea>
+        <button type="submit" id="cf-submit">Send Message</button>
+        <div id="cf-status" class="cf-status hidden"></div>
+      </form>
+    </div>
+  </section>
+
   <!-- ═══ FOOTER ═══ -->
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-col">
-        <span class="footer-logo">Swarm & Bee <span class="logo-cre">CRE</span></span>
-        <p>The first autonomous CRE intelligence firm.<br>Edge AI. 300+ cities. 19 skills. One API.</p>
+        <span class="footer-logo">Swarm &amp; Bee <span style="color:#f59e0b">CRE</span></span>
+        <p>The first autonomous CRE intelligence firm. Edge AI. 300+ cities. 19 skills. One API.</p>
       </div>
       <div class="footer-col">
-        <h4>Product</h4>
-        <a href="https://router.swarmandbee.com">Router API</a>
+        <h4>Ecosystem</h4>
+        <a href="https://swarmandbee.com">swarmandbee.com</a>
+        <a href="https://swarmandbeeroi.com">ROI Thesis</a>
         <a href="https://api.router.swarmandbee.com">API Docs</a>
-        <a href="https://router.swarmandbee.com/skills">Skills</a>
         <a href="https://router.swarmandbee.com/health">Health</a>
+        <a href="https://hashscan.io/mainnet/account/0.0.10298834">Hedera Agent</a>
       </div>
       <div class="footer-col">
         <h4>Community</h4>
         <a href="https://discord.gg/H7cyEHFHgu">Discord</a>
         <a href="https://x.com/swarmandbeedev">X / Twitter</a>
-        <a href="https://swarmandbee.com">swarmandbee.com</a>
-        <a href="https://swarmandbeeroi.com">ROI Thesis</a>
-        <a href="https://hashscan.io/mainnet/account/0.0.10298834">Hedera Agent</a>
+        <a href="https://router.swarmandbee.com/skills">Skills</a>
+        <a href="https://router.swarmandbee.com/quickstart">Quickstart</a>
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
