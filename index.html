@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swarm & Bee CRE — Commercial Real Estate Intelligence at Scale</title>
+  <meta name="description" content="19 composable AI skills, semantic memory, 50 state area experts, event machine. One query, full intelligence package. Edge AI on Cloudflare Workers.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ═══ NAV ═══ -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <span class="logo-icon">S&B</span>
+        <span class="logo-text">Swarm & Bee <span class="logo-cre">CRE</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#search">Search</a>
+        <a href="#how">How It Works</a>
+        <a href="#skills">Skills</a>
+        <a href="#api">API</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#chain">On-Chain</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section id="hero" class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">Live on Cloudflare Edge &middot; 300+ Cities</div>
+      <h1>CRE Intelligence<br><span class="hero-accent">at Scale</span></h1>
+      <p class="hero-sub">One query. Six subsystems. Full intelligence package.<br>
+        19 AI skills, semantic memory, 50 state experts, event machine.</p>
+
+      <form id="search-form" class="search-box" autocomplete="off">
+        <input type="text" id="search-input" placeholder="85K SF warehouse Alliance TX 6% cap" aria-label="Search CRE intelligence">
+        <button type="submit" id="search-btn">Search</button>
+      </form>
+      <div class="search-examples">
+        Try: <button class="example-btn" data-q="85K SF warehouse Alliance TX 6% cap">warehouse TX</button>
+        <button class="example-btn" data-q="cold storage near Miami ports">cold storage FL</button>
+        <button class="example-btn" data-q="1031 exchange industrial NJ">1031 exchange NJ</button>
+        <button class="example-btn" data-q="what are the best markets for logistics investment">logistics markets</button>
+      </div>
+
+      <!-- Search results -->
+      <div id="search-results" class="search-results hidden"></div>
+    </div>
+  </section>
+
+  <!-- ═══ STATS ═══ -->
+  <section id="stats" class="stats">
+    <div class="stats-inner">
+      <div class="stat" data-target="19">
+        <span class="stat-num" data-count="0">0</span>
+        <span class="stat-label">AI Skills</span>
+      </div>
+      <div class="stat" data-target="50">
+        <span class="stat-num" data-count="0">0</span>
+        <span class="stat-label">State Experts</span>
+      </div>
+      <div class="stat" data-target="22">
+        <span class="stat-num" data-count="0">0</span>
+        <span class="stat-label">Event Types</span>
+      </div>
+      <div class="stat" data-target="300">
+        <span class="stat-num" data-count="0">0</span>
+        <span class="stat-label">Edge Cities</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HOW IT WORKS ═══ -->
+  <section id="how" class="how">
+    <div class="section-inner">
+      <h2>How It Works</h2>
+      <p class="section-sub">Traditional CRE: 200 cold calls/day, manual comp pulls, hand-written IC memos.<br>
+        SwarmCRE: one query &rarr; full intelligence package &rarr; 2M dials/day at edge speed.</p>
+      <div class="flow">
+        <div class="flow-step">
+          <div class="flow-num">1</div>
+          <h3>Query</h3>
+          <p>Natural language or structured. Heuristic parser extracts asset type, state, city, SF, price, cap rate, intent in &lt;5ms.</p>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step">
+          <div class="flow-num">2</div>
+          <h3>Orchestrate</h3>
+          <p>6 subsystems run in parallel: semantic memory, event database, entity resolution, market context, infrastructure map, state expert.</p>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step">
+          <div class="flow-num">3</div>
+          <h3>Intelligence</h3>
+          <p>Full package in &lt;2s. Market heat, comps, events, entities, skill recommendations. Deep mode executes skills for you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SKILLS ═══ -->
+  <section id="skills" class="skills">
+    <div class="section-inner">
+      <h2>19 Composable Skills</h2>
+      <p class="section-sub">Each skill: system prompt &rarr; Qwen3-30B edge AI &rarr; JSON validation &rarr; R2 finality.<br>
+        Execute individually or let the search orchestrator recommend the right ones.</p>
+      <div id="skills-grid" class="skills-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ API ═══ -->
+  <section id="api" class="api">
+    <div class="section-inner">
+      <h2>API Quick Start</h2>
+      <p class="section-sub">One endpoint. Full intelligence package. No SDK required.</p>
+      <div class="code-tabs">
+        <button class="code-tab active" data-lang="curl">cURL</button>
+        <button class="code-tab" data-lang="python">Python</button>
+        <button class="code-tab" data-lang="node">Node.js</button>
+      </div>
+      <div class="code-blocks">
+        <pre class="code-block active" data-lang="curl"><code>curl -X POST https://router.swarmandbee.com/search \
+  -H "Content-Type: application/json" \
+  -d '{"query": "85K SF warehouse Alliance TX 6% cap"}'
+
+# Deep mode (executes recommended skills)
+curl -X POST https://api.router.swarmandbee.com/search \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: sb_live_your_key" \
+  -d '{"query": "cold storage Miami FL", "deep": true}'</code></pre>
+        <pre class="code-block" data-lang="python"><code>import requests
+
+# Basic search (free on router domain)
+r = requests.post("https://router.swarmandbee.com/search",
+    json={"query": "85K SF warehouse Alliance TX 6% cap"})
+data = r.json()
+
+print(f"Parsed: {data['parsed']}")
+print(f"Market: {data['market_context']['label']}")
+print(f"Skills: {data['skills']['recommended']}")
+print(f"Latency: {data['latency_ms']}ms")</code></pre>
+        <pre class="code-block" data-lang="node"><code>const res = await fetch("https://router.swarmandbee.com/search", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    query: "85K SF warehouse Alliance TX 6% cap"
+  })
+});
+const data = await res.json();
+
+console.log(`Parsed: ${JSON.stringify(data.parsed)}`);
+console.log(`Market: ${data.market_context?.label}`);
+console.log(`Skills: ${data.skills.recommended}`);
+console.log(`Latency: ${data.latency_ms}ms`);</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PRICING ═══ -->
+  <section id="pricing" class="pricing">
+    <div class="section-inner">
+      <h2>Simple Pricing</h2>
+      <p class="section-sub">Pay for what you use. Basic search is free on the router domain.</p>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <h3>Free</h3>
+          <div class="price">$0</div>
+          <ul>
+            <li>10 credits</li>
+            <li>Basic search (free on router domain)</li>
+            <li>All 19 skills available</li>
+            <li>Semantic memory search</li>
+            <li>Event & entity queries</li>
+          </ul>
+          <a href="https://api.router.swarmandbee.com" class="price-btn">Get Started</a>
+        </div>
+        <div class="price-card featured">
+          <div class="price-badge">Most Popular</div>
+          <h3>Starter</h3>
+          <div class="price">$49<span>/mo</span></div>
+          <ul>
+            <li>500 credits/month</li>
+            <li>Deep search mode</li>
+            <li>All 19 skills</li>
+            <li>Priority inference</li>
+            <li>API key dashboard</li>
+          </ul>
+          <a href="https://api.router.swarmandbee.com" class="price-btn primary">Start Building</a>
+        </div>
+        <div class="price-card">
+          <h3>Pro</h3>
+          <div class="price">$299<span>/mo</span></div>
+          <ul>
+            <li>5,000 credits/month</li>
+            <li>Deep search + batch</li>
+            <li>Custom skill pipelines</li>
+            <li>Webhook events</li>
+            <li>Dedicated support</li>
+          </ul>
+          <a href="https://api.router.swarmandbee.com" class="price-btn">Contact Us</a>
+        </div>
+      </div>
+      <div class="credit-table">
+        <h4>Credit Costs</h4>
+        <div class="credit-row"><span>Basic search</span><span>1 credit</span></div>
+        <div class="credit-row"><span>Deep search (per skill)</span><span>+2 credits</span></div>
+        <div class="credit-row"><span>Skill execution</span><span>2 credits</span></div>
+        <div class="credit-row"><span>Cook (AI inference)</span><span>1 credit</span></div>
+        <div class="credit-row"><span>Memory search</span><span>1 credit</span></div>
+        <div class="credit-row"><span>Event/entity query</span><span>0.5 credits</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ON-CHAIN ═══ -->
+  <section id="chain" class="chain">
+    <div class="section-inner">
+      <h2>On-Chain Intelligence</h2>
+      <p class="section-sub">Every Intelligence Object timestamped on Hedera Consensus Service.<br>
+        HCS-10 OpenConvAI compliant. Agent-to-agent communication on public ledger.</p>
+      <div class="chain-grid">
+        <div class="chain-card">
+          <h3>HCS-10 Protocol</h3>
+          <p>Peer-to-peer agent messaging via Hedera Consensus Service. Connection management, registry discovery, signed transactions.</p>
+        </div>
+        <div class="chain-card">
+          <h3>HCS-11 Profile</h3>
+          <p>Agent identity on-chain. 19 skills, capabilities, endpoints — discoverable by any agent in the OpenConvAI ecosystem.</p>
+        </div>
+        <div class="chain-card">
+          <h3>Intelligence Objects</h3>
+          <p>Every cooked object stored in R2 with Hedera consensus timestamp. Immutable provenance for CRE intelligence.</p>
+        </div>
+      </div>
+      <div class="chain-ids">
+        <div><span class="chain-label">Agent Account:</span> <code>0.0.10298834</code></div>
+        <div><span class="chain-label">Inbound Topic:</span> <code>0.0.10298837</code></div>
+        <div><span class="chain-label">Outbound Topic:</span> <code>0.0.10298836</code></div>
+        <div><span class="chain-label">Protocol:</span> <code>HCS-10 OpenConvAI</code></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <span class="footer-logo">Swarm & Bee <span class="logo-cre">CRE</span></span>
+        <p>The first autonomous CRE intelligence firm.<br>Edge AI. 300+ cities. 19 skills. One API.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="https://router.swarmandbee.com">Router API</a>
+        <a href="https://api.router.swarmandbee.com">API Docs</a>
+        <a href="https://router.swarmandbee.com/skills">Skills</a>
+        <a href="https://router.swarmandbee.com/health">Health</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="https://swarmandbee.com">swarmandbee.com</a>
+        <a href="https://swarmandbee.ai">swarmandbee.ai</a>
+        <a href="https://swarmhealth.io">swarmhealth.io</a>
+      </div>
+      <div class="footer-col">
+        <h4>On-Chain</h4>
+        <a href="https://hashscan.io/mainnet/account/0.0.10298834">Hedera Agent</a>
+        <a href="https://hol.org/docs/standards/hcs-10/">HCS-10 Standard</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Swarm & Bee. All rights reserved. Powered by Cloudflare Workers + Hedera.
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
