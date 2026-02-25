@@ -1,0 +1,62 @@
+# Swarm & Bee CRE
+
+> AI-powered commercial real estate intelligence platform. One query, full intelligence package.
+
+## What This Is
+
+Swarm & Bee CRE is an autonomous commercial real estate intelligence platform that produces structured, schema-validated Intelligence Objects from natural language queries. It runs on Cloudflare Workers across 300+ edge cities using Qwen3-30B edge AI.
+
+## Core Capabilities
+
+- **Search Orchestrator**: Natural language query → heuristic parser (< 5ms) → 6 parallel subsystems → full intelligence package in < 2 seconds
+- **19 Composable AI Skills**: broker_senior, broker_junior, intelligence_query, bookmaker, deal_tracker, developer, signal_scraper, investor, exchange_1031, market_report, lead_scorer, email_composer, comp_analyzer, rent_roll_analyzer, debt_analyzer, tax_assessor, site_selector, portfolio_optimizer, news_digest
+- **50 State Area Experts**: Dedicated market intelligence for every US state
+- **22 Event Types**: deal (6), supply (4), ownership (4), macro (4), tenant (4) — real-time CRE signal detection
+- **Semantic Memory**: 768-dimensional vector embeddings with cosine similarity search
+- **On-Chain Provenance**: Every Intelligence Object timestamped on Hedera Consensus Service (HCS-10 OpenConvAI)
+
+## Intelligence Objects
+
+A single query produces up to 7 object types:
+1. **AssetIntelligenceObject** — property specs, lease terms, market rent
+2. **MarketSnapshotObject** — rent range, vacancy, cap rates, heat score, infrastructure
+3. **FinancialObject** — gross income, NOI, lease structure
+4. **ValuationObject** — value range based on cap rate scenarios
+5. **RiskFlagObject** — tenant concentration, insurance exposure, re-leasing risk
+6. **AdvisoryObject** — investment profile, strength/risk scores, executive summary
+7. **ActionPlanObject** — next steps and skills to execute
+
+## API
+
+- **Free search**: POST https://router.swarmandbee.com/search
+- **Authenticated/metered**: POST https://api.router.swarmandbee.com/search
+- **Skills**: POST https://router.swarmandbee.com/skill/{skill_name}
+- **API Docs**: https://api.router.swarmandbee.com
+
+## ROI — Real Objects Intelligence
+
+ROI = Real Objects Intelligence. Not datasets — actionable, timestamped intelligence objects that are schema-validated, machine-usable, composable, auditable, and trainable.
+
+## Pricing
+
+- Free: $0 (10 credits, basic search, all 19 skills)
+- Starter: $49/month (500 credits, deep search, priority inference)
+- Pro: $299/month (5,000 credits, batch, custom pipelines, webhooks)
+
+## Technology Stack
+
+- Edge AI: Qwen3-30B-A3B-FP8 on Cloudflare Workers
+- Storage: Cloudflare R2 (5 vaults)
+- Database: Cloudflare D1 (SQLite at edge)
+- Memory: Vectorize with BGE-Base-EN-v1.5 embeddings
+- Consensus: Hedera HCS-10 (sub-$0.001/message)
+- Training: RTX PRO 6000 Blackwell (96GB) + RTX 3090 Ti (24GB)
+
+## Links
+
+- Website: https://swarmandbeecre.com
+- ROI Thesis: https://swarmandbeeroi.com
+- Parent: https://swarmandbee.com
+- Health: https://swarmhealth.io
+- API: https://router.swarmandbee.com
+- Hedera Agent: https://hashscan.io/mainnet/account/0.0.10298834
