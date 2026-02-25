@@ -173,6 +173,17 @@
 </head>
 <body itemscope itemtype="https://schema.org/WebPage">
 
+  <!-- ═══ ECOSYSTEM BAR ═══ -->
+  <div class="eco-bar">
+    <a href="https://swarmandbeeroi.com">ROI Thesis</a>
+    <span class="eco-sep">|</span>
+    <a href="https://swarmandbeecre.com" class="eco-active">CRE Platform</a>
+    <span class="eco-sep">|</span>
+    <a href="https://api.router.swarmandbee.com">API Docs</a>
+    <span class="eco-sep">|</span>
+    <a href="https://router.swarmandbee.com/health">Health</a>
+  </div>
+
   <!-- ═══ NAV ═══ -->
   <nav class="nav">
     <div class="nav-inner">
@@ -184,7 +195,9 @@
         <a href="#search">Search</a>
         <a href="#how">How It Works</a>
         <a href="#skills">Skills</a>
+        <a href="#workflows">Workflows</a>
         <a href="#api">API</a>
+        <a href="#quickstart">Quickstart</a>
         <a href="#output">Output</a>
         <a href="#pricing">Pricing</a>
         <a href="#chain">On-Chain</a>
@@ -276,6 +289,134 @@
       <div id="skills-grid" class="skills-grid">
         <!-- Populated by JS -->
       </div>
+      <div id="skill-mock-panel" class="skill-mock-panel hidden"></div>
+    </div>
+  </section>
+
+  <!-- ═══ WORKFLOWS ═══ -->
+  <section id="workflows" class="workflows">
+    <div class="section-inner">
+      <h2>End-to-End Workflows</h2>
+      <p class="section-sub">Chain API calls into real CRE workflows. Each step feeds the next. All endpoints work on the free router domain.</p>
+
+      <div class="wf-grid">
+        <!-- Workflow 1: Deal Underwriting -->
+        <div class="wf-card">
+          <div class="wf-badge">Workflow 1</div>
+          <h3>Deal Underwriting</h3>
+          <p class="wf-desc">Full deal analysis from a single property description.</p>
+          <div class="wf-steps">
+            <div class="wf-step">
+              <div class="wf-step-num">1</div>
+              <div class="wf-step-body">
+                <h4>Search</h4>
+                <code>POST /search</code>
+                <p>Get parsed query + market context + skill recommendations</p>
+              </div>
+            </div>
+            <div class="wf-arrow-v"></div>
+            <div class="wf-step">
+              <div class="wf-step-num">2</div>
+              <div class="wf-step-body">
+                <h4>Broker Analysis</h4>
+                <code>POST /skill/broker_senior</code>
+                <p>Deal verdict, pricing, risk assessment</p>
+              </div>
+            </div>
+            <div class="wf-arrow-v"></div>
+            <div class="wf-step">
+              <div class="wf-step-num">3</div>
+              <div class="wf-step-body">
+                <h4>Debt Analysis</h4>
+                <code>POST /skill/debt_analyzer</code>
+                <p>DSCR, LTV, debt terms from step 2 pricing</p>
+              </div>
+            </div>
+            <div class="wf-arrow-v"></div>
+            <div class="wf-step">
+              <div class="wf-step-num">4</div>
+              <div class="wf-step-body">
+                <h4>Comps</h4>
+                <code>POST /skill/comp_analyzer</code>
+                <p>Comparable sales and market positioning</p>
+              </div>
+            </div>
+          </div>
+          <button class="wf-run-btn" data-workflow="underwriting">Run Step 1 Live</button>
+        </div>
+
+        <!-- Workflow 2: Market Intelligence -->
+        <div class="wf-card">
+          <div class="wf-badge">Workflow 2</div>
+          <h3>Market Intelligence</h3>
+          <p class="wf-desc">Deep market analysis with events, memory, and trends.</p>
+          <div class="wf-steps">
+            <div class="wf-step">
+              <div class="wf-step-num">1</div>
+              <div class="wf-step-body">
+                <h4>Deep Search</h4>
+                <code>POST /search {"deep": true}</code>
+                <p>Full intelligence package + auto skill execution</p>
+              </div>
+            </div>
+            <div class="wf-arrow-v"></div>
+            <div class="wf-step">
+              <div class="wf-step-num">2</div>
+              <div class="wf-step-body">
+                <h4>Event Query</h4>
+                <code>GET /events/query?type=just_listed&amp;state=TX</code>
+                <p>Recent deal activity in the target market</p>
+              </div>
+            </div>
+            <div class="wf-arrow-v"></div>
+            <div class="wf-step">
+              <div class="wf-step-num">3</div>
+              <div class="wf-step-body">
+                <h4>Memory Search</h4>
+                <code>POST /memory/search</code>
+                <p>Historical intelligence objects and trends</p>
+              </div>
+            </div>
+          </div>
+          <button class="wf-run-btn" data-workflow="market">Run Step 1 Live</button>
+        </div>
+
+        <!-- Workflow 3: 1031 Exchange -->
+        <div class="wf-card">
+          <div class="wf-badge">Workflow 3</div>
+          <h3>1031 Exchange</h3>
+          <p class="wf-desc">Exchange analysis, site selection, and tax impact.</p>
+          <div class="wf-steps">
+            <div class="wf-step">
+              <div class="wf-step-num">1</div>
+              <div class="wf-step-body">
+                <h4>Exchange Analysis</h4>
+                <code>POST /skill/exchange_1031</code>
+                <p>Timeline, boot calc, replacement requirements</p>
+              </div>
+            </div>
+            <div class="wf-arrow-v"></div>
+            <div class="wf-step">
+              <div class="wf-step-num">2</div>
+              <div class="wf-step-body">
+                <h4>Site Selection</h4>
+                <code>POST /skill/site_selector</code>
+                <p>Target markets matching exchange criteria</p>
+              </div>
+            </div>
+            <div class="wf-arrow-v"></div>
+            <div class="wf-step">
+              <div class="wf-step-num">3</div>
+              <div class="wf-step-body">
+                <h4>Tax Assessment</h4>
+                <code>POST /skill/tax_assessor</code>
+                <p>Tax implications per target state</p>
+              </div>
+            </div>
+          </div>
+          <button class="wf-run-btn" data-workflow="exchange">Run Step 1 Live</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -324,6 +465,74 @@ console.log(`Parsed: ${JSON.stringify(data.parsed)}`);
 console.log(`Market: ${data.market_context?.label}`);
 console.log(`Skills: ${data.skills.recommended}`);
 console.log(`Latency: ${data.latency_ms}ms`);</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ QUICKSTART ═══ -->
+  <section id="quickstart" class="quickstart">
+    <div class="section-inner">
+      <h2>5-Minute Quickstart</h2>
+      <p class="section-sub">From zero to your first Intelligence Package in 3 steps.<br>No API key needed — the public router is free.</p>
+
+      <div class="qs-steps">
+        <!-- Step 1 -->
+        <div class="qs-step">
+          <div class="qs-num">1</div>
+          <h3>Copy This</h3>
+          <p>One cURL command. Hits the search orchestrator. Returns a full intelligence package.</p>
+          <div class="qs-code-wrap">
+            <pre class="qs-code"><code>curl -X POST https://router.swarmandbee.com/search \
+  -H "Content-Type: application/json" \
+  -d '{"query": "85K SF warehouse Alliance TX 6% cap"}'</code></pre>
+            <button class="copy-btn" data-copy="curl -X POST https://router.swarmandbee.com/search -H &quot;Content-Type: application/json&quot; -d '{&quot;query&quot;: &quot;85K SF warehouse Alliance TX 6% cap&quot;}'">Copy</button>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="qs-step">
+          <div class="qs-num">2</div>
+          <h3>Paste &amp; Run</h3>
+          <p>Paste in your terminal. Or click below to run it right here.</p>
+          <button class="qs-try-btn" id="qs-try-btn">Try It Now — Live</button>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="qs-step">
+          <div class="qs-num">3</div>
+          <h3>Get Your Package</h3>
+          <p>Parsed query, market context, infrastructure, memory matches, recent events, entity graph, skill recommendations. All in &lt;2 seconds.</p>
+        </div>
+      </div>
+
+      <!-- What's Next -->
+      <div class="qs-next">
+        <h3>What's Next?</h3>
+        <div class="qs-next-grid">
+          <div class="qs-next-card">
+            <h4>Execute a Skill</h4>
+            <p>Get a full deal verdict from the senior broker skill — zero credits on mock.</p>
+            <div class="qs-code-wrap">
+              <pre class="qs-code"><code>curl https://router.swarmandbee.com/skill/broker_senior/mock</code></pre>
+              <button class="copy-btn" data-copy="curl https://router.swarmandbee.com/skill/broker_senior/mock">Copy</button>
+            </div>
+          </div>
+          <div class="qs-next-card">
+            <h4>Search Memory</h4>
+            <p>Query the semantic memory index — vector search over past intelligence objects.</p>
+            <div class="qs-code-wrap">
+              <pre class="qs-code"><code>curl -X POST https://router.swarmandbee.com/memory/search \
+  -H "Content-Type: application/json" \
+  -d '{"query": "cold storage Florida", "limit": 5}'</code></pre>
+              <button class="copy-btn" data-copy="curl -X POST https://router.swarmandbee.com/memory/search -H &quot;Content-Type: application/json&quot; -d '{&quot;query&quot;: &quot;cold storage Florida&quot;, &quot;limit&quot;: 5}'">Copy</button>
+            </div>
+          </div>
+          <div class="qs-next-card">
+            <h4>Go Metered</h4>
+            <p>Unlock deep search, batch processing, and custom pipelines with an API key.</p>
+            <a href="#pricing" class="qs-link">See pricing &rarr;</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -643,6 +852,21 @@ console.log(`Latency: ${data.latency_ms}ms`);</code></pre>
       &copy; 2026 Swarm & Bee. All rights reserved. Powered by Cloudflare Workers + Hedera.
     </div>
   </footer>
+
+  <!-- ═══ FEEDBACK WIDGET ═══ -->
+  <div id="feedback-widget" class="fb-widget">
+    <button id="fb-toggle" class="fb-toggle" aria-label="Send feedback">Feedback</button>
+    <div id="fb-panel" class="fb-panel hidden">
+      <div class="fb-header">How's the experience?</div>
+      <div class="fb-rating">
+        <button class="fb-rate" data-rate="1" aria-label="thumbs down">👎</button>
+        <button class="fb-rate" data-rate="5" aria-label="thumbs up">👍</button>
+      </div>
+      <textarea id="fb-comment" class="fb-comment" placeholder="What could be better?" rows="3"></textarea>
+      <button id="fb-submit" class="fb-submit">Send</button>
+      <div id="fb-thanks" class="fb-thanks hidden">Thanks for your feedback!</div>
+    </div>
+  </div>
 
   <script src="app.js"></script>
 </body>

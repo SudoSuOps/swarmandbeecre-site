@@ -180,10 +180,58 @@ async function loadSkills() {
         <h4>${(s.name || '').replace(/_/g, ' ')}</h4>
         <div class="skill-ver">v${s.version || '1.0'}</div>
         <p>${truncate(s.description || s.role || '', 80)}</p>
+        <button class="mock-btn" data-skill="${s.name}">See Mock</button>
       </div>
     `).join('');
+
+    // Wire mock buttons
+    grid.querySelectorAll('.mock-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        loadSkillMock(btn.dataset.skill);
+      });
+    });
   } catch {
     grid.innerHTML = '<p style="color:var(--text-3);text-align:center;grid-column:1/-1">Loading skills...</p>';
+  }
+}
+
+async function loadSkillMock(skillName) {
+  const panel = document.getElementById('skill-mock-panel');
+  panel.classList.remove('hidden');
+  panel.innerHTML = `<div class="mock-header">
+    <h3>${skillName.replace(/_/g, ' ')} — Mock Response</h3>
+    <button class="mock-close" onclick="document.getElementById('skill-mock-panel').classList.add('hidden')">&times;</button>
+  </div>
+  <div class="mock-loading">Loading mock...</div>`;
+  panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+  try {
+    const res = await fetch(`${API}/skill/${skillName}/mock`);
+    const data = await res.json();
+    panel.innerHTML = `<div class="mock-header">
+      <h3>${skillName.replace(/_/g, ' ')} — Mock Response</h3>
+      <div class="mock-actions">
+        <button class="copy-btn" data-copy='${JSON.stringify(data, null, 2).replace(/'/g, '&#39;')}'>Copy JSON</button>
+        <button class="mock-close" onclick="document.getElementById('skill-mock-panel').classList.add('hidden')">&times;</button>
+      </div>
+    </div>
+    <pre class="mock-json"><code>${JSON.stringify(data, null, 2)}</code></pre>
+    <p class="mock-note">This is a real schema-valid response. Zero credits. <code>GET /skill/${skillName}/mock</code></p>`;
+    // Wire the copy button inside the panel
+    panel.querySelector('.copy-btn')?.addEventListener('click', function() {
+      navigator.clipboard.writeText(this.dataset.copy).then(() => {
+        this.textContent = 'Copied!';
+        this.classList.add('copied');
+        setTimeout(() => { this.textContent = 'Copy JSON'; this.classList.remove('copied'); }, 2000);
+      });
+    });
+  } catch (e) {
+    panel.innerHTML = `<div class="mock-header">
+      <h3>${skillName.replace(/_/g, ' ')}</h3>
+      <button class="mock-close" onclick="document.getElementById('skill-mock-panel').classList.add('hidden')">&times;</button>
+    </div>
+    <p style="color:#ef4444;padding:16px">Error loading mock: ${e.message}</p>`;
   }
 }
 
@@ -235,7 +283,95 @@ document.querySelectorAll('.code-tab').forEach(tab => {
   });
 });
 
+// ── Copy to Clipboard ────────────────────────────────────
+
+document.querySelectorAll('.copy-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const text = btn.dataset.copy;
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = 'Copy';
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  });
+});
+
+// ── Workflow Run Step 1 ──────────────────────────────────
+
+const workflowQueries = {
+  underwriting: '85K SF warehouse Alliance TX 6% cap',
+  market: 'logistics investment Texas hot markets',
+  exchange: '1031 exchange industrial NJ',
+};
+
+document.querySelectorAll('.wf-run-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const wf = btn.dataset.workflow;
+    const query = workflowQueries[wf];
+    if (query) {
+      input.value = query;
+      input.focus();
+      runSearch(query);
+      document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+// ── Quickstart Try It Now ────────────────────────────────
+
+const qsBtn = document.getElementById('qs-try-btn');
+if (qsBtn) {
+  qsBtn.addEventListener('click', () => {
+    input.value = '85K SF warehouse Alliance TX 6% cap';
+    input.focus();
+    runSearch('85K SF warehouse Alliance TX 6% cap');
+    document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });
+  });
+}
+
 // ── Init ────────────────────────────────────────────────
+
+// ── Feedback Widget ──────────────────────────────────────
+
+(function initFeedback() {
+  const toggle = document.getElementById('fb-toggle');
+  const panel = document.getElementById('fb-panel');
+  const submit = document.getElementById('fb-submit');
+  const thanks = document.getElementById('fb-thanks');
+  let selectedRating = 0;
+
+  if (!toggle) return;
+
+  toggle.addEventListener('click', () => panel.classList.toggle('hidden'));
+
+  document.querySelectorAll('.fb-rate').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.fb-rate').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      selectedRating = parseInt(btn.dataset.rate, 10);
+    });
+  });
+
+  submit.addEventListener('click', async () => {
+    const comment = document.getElementById('fb-comment').value.trim();
+    if (!comment && !selectedRating) return;
+    submit.disabled = true;
+    submit.textContent = 'Sending...';
+    try {
+      await fetch(`${API}/feedback`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ source: 'cre_site', rating: selectedRating, comment, page: location.pathname }),
+      });
+      submit.style.display = 'none';
+      thanks.classList.remove('hidden');
+      setTimeout(() => { panel.classList.add('hidden'); }, 2000);
+    } catch { submit.textContent = 'Error — try again'; submit.disabled = false; }
+  });
+})();
 
 loadSkills();
 animateCounters();
