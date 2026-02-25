@@ -24,6 +24,7 @@
         <a href="#how">How It Works</a>
         <a href="#skills">Skills</a>
         <a href="#api">API</a>
+        <a href="#output">Output</a>
         <a href="#pricing">Pricing</a>
         <a href="#chain">On-Chain</a>
       </div>
@@ -169,44 +170,33 @@ console.log(`Latency: ${data.latency_ms}ms`);</code></pre>
   <!-- ═══ REAL OUTPUT ═══ -->
   <section id="output" class="output">
     <div class="section-inner">
-      <h2>Real Output</h2>
-      <p class="section-sub">What you actually get back. Schema-validated Intelligence Objects — not summaries, not chat. Structured, storable, trainable.</p>
+      <h2>Real Output — 7 Objects, One Query</h2>
+      <p class="section-sub">Not text. Not summaries. Not chat. A bankable intelligence package.<br>
+        Every object: schema-validated, machine-usable, composable, auditable, Hedera-timestamped.</p>
+      <p class="output-scenario">Scenario: <strong>"950K SF single-tenant industrial Florida"</strong> &rarr; full package in &lt;2s</p>
 
+      <!-- 1. Asset Intelligence Object -->
       <div class="example-output">
         <button class="example-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
-          Asset Intelligence Object — 85K SF Warehouse, Alliance TX
+          <span>🏗️ Asset Intelligence Object — 950K SF Industrial, FL</span>
           <span class="arrow">&#9660;</span>
         </button>
         <div class="example-body">
           <pre><code>{
   "object_type": "AssetIntelligenceObject",
-  "asset_type": "infill_warehouse",
-  "address": "Alliance TX",
-  "sf": 85000,
-  "year_built": 2019,
-  "clear_height_ft": 32,
-  "dock_doors": 12,
-  "trailer_parking": 40,
+  "asset_type": "industrial_single_tenant",
+  "state": "FL",
+  "sf": 950000,
+  "clear_height_ft": 36,
+  "dock_doors": 80,
+  "trailer_parking": 200,
   "rail_served": false,
   "sprinkler": "ESFR",
   "zoning": "industrial",
-  "asking_price": 8500000,
-  "price_psf": 100.00,
-  "cap_rate": 0.065,
-  "noi": 552500,
   "occupancy": 1.0,
-  "tenant": "FedEx Ground",
   "lease_type": "NNN",
-  "lease_term_remaining_months": 62,
-  "annual_escalation": 0.025,
-  "market_rent_psf": 7.25,
-  "vacancy_market": 0.038,
-  "tax_rate": 0.0195,
-  "insurance_psf": 0.45,
-  "cam_psf": 1.10,
-  "debt_available": true,
-  "ltv_max": 0.65,
-  "rate_indication": 0.0625,
+  "market_rent_psf": 8.25,
+  "vacancy_market": 0.042,
   "hedera_timestamp": "2025-02-24T18:32:01.443Z",
   "confidence": 0.94,
   "source_skill": "broker_senior"
@@ -214,46 +204,164 @@ console.log(`Latency: ${data.latency_ms}ms`);</code></pre>
         </div>
       </div>
 
-      <div class="example-output" style="margin-top:12px">
+      <!-- 2. Market Snapshot Object -->
+      <div class="example-output">
         <button class="example-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
-          Market Snapshot Object — Dallas-Fort Worth Industrial
+          <span>📊 Market Snapshot Object — Florida Industrial</span>
           <span class="arrow">&#9660;</span>
         </button>
         <div class="example-body">
           <pre><code>{
   "object_type": "MarketSnapshotObject",
-  "market": "Dallas-Fort Worth",
-  "submarket": "Alliance / North Fort Worth",
+  "market": "Central Florida",
   "asset_class": "industrial",
   "rent_range_nnn_psf": [6.50, 9.75],
-  "vacancy_pct": 3.8,
-  "absorption_sf_ytd": 12400000,
-  "deliveries_sf_ytd": 8200000,
-  "cap_rate_range": [5.5, 7.0],
-  "market_heat": 87,
+  "vacancy_pct": 4.2,
+  "cap_rate_range": [5.25, 6.25],
+  "market_heat": 82,
   "tier": 1,
-  "population_growth_yoy": 0.023,
-  "job_growth_yoy": 0.031,
+  "population_growth_yoy": 0.019,
+  "job_growth_yoy": 0.027,
   "major_employers": [
-    "Amazon", "FedEx", "BNSF Railway",
-    "Bell Helicopter", "Lockheed Martin"
+    "Amazon", "FedEx", "Publix", "Chewy"
   ],
   "infrastructure": {
-    "interstate": ["I-35W", "SH-170", "US-287"],
-    "rail": "BNSF Alliance Intermodal",
-    "airport": "Fort Worth Alliance Airport (AFW)",
-    "port_proximity_mi": 280
+    "interstate": ["I-4", "I-75", "I-95"],
+    "port": "Port Tampa Bay / Port Everglades",
+    "airport": "MCO / TPA"
   },
   "tax_environment": {
-    "property_tax_rate": 0.0195,
+    "property_tax_rate": 0.018,
     "income_tax": false,
-    "incentive_zones": ["Alliance TAD", "Haslet TIF"]
+    "incentive_zones": ["Enterprise Zone", "QOZ"]
   },
   "hedera_timestamp": "2025-02-24T18:32:01.443Z",
   "confidence": 0.91,
   "source_skill": "market_report"
 }</code></pre>
         </div>
+      </div>
+
+      <!-- 3. Financial Object -->
+      <div class="example-output">
+        <button class="example-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+          <span>💰 Financial Object — Stabilized Income</span>
+          <span class="arrow">&#9660;</span>
+        </button>
+        <div class="example-body">
+          <pre><code>{
+  "object_type": "FinancialObject",
+  "base_rent_psf": 8.25,
+  "gross_income": 7837500,
+  "stabilized_noi_estimate": 7700000,
+  "lease_structure": "NNN",
+  "tenant_pays": ["taxes", "insurance", "CAM"],
+  "landlord_expense": "asset_mgmt + reserves",
+  "confidence_score": 0.74
+}</code></pre>
+          <p class="example-note">950K SF &times; $8.25 NNN = $7.84M gross. Single-tenant NNN: tenant pays taxes, insurance, CAM. NOI &asymp; $7.7M after minor reserves.</p>
+        </div>
+      </div>
+
+      <!-- 4. Valuation Object -->
+      <div class="example-output">
+        <button class="example-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+          <span>🏦 Valuation Object — $123M–$147M Range</span>
+          <span class="arrow">&#9660;</span>
+        </button>
+        <div class="example-body">
+          <pre><code>{
+  "object_type": "ValuationObject",
+  "low_estimate": 123200000,
+  "high_estimate": 146600000,
+  "midpoint": 135000000,
+  "value_per_sf_mid": 142,
+  "cap_rate_low": 0.0525,
+  "cap_rate_high": 0.0625,
+  "noi_used": 7700000,
+  "confidence_score": 0.72
+}</code></pre>
+          <p class="example-note">At 5.25% cap: $146.6M. At 6.25% cap: $123.2M. Midpoint &asymp; $135M ($142/SF).</p>
+        </div>
+      </div>
+
+      <!-- 5. Risk Flag Object -->
+      <div class="example-output">
+        <button class="example-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+          <span>⚠️ Risk Intelligence Object — Single-Tenant Flags</span>
+          <span class="arrow">&#9660;</span>
+        </button>
+        <div class="example-body">
+          <pre><code>{
+  "object_type": "RiskFlagObject",
+  "tenant_concentration": "100%",
+  "lease_term_dependency": "Critical",
+  "re_leasing_risk": "High if specialized build",
+  "insurance_exposure": "Elevated in FL",
+  "storm_exposure": "Location-specific",
+  "market_oversupply_risk": "Monitor deliveries pipeline",
+  "confidence_score": 0.77
+}</code></pre>
+        </div>
+      </div>
+
+      <!-- 6. Advisory Object -->
+      <div class="example-output">
+        <button class="example-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+          <span>🧠 Advisory Object — Core/Core+ Profile</span>
+          <span class="arrow">&#9660;</span>
+        </button>
+        <div class="example-body">
+          <pre><code>{
+  "object_type": "AdvisoryObject",
+  "investment_profile": "Core / Core+",
+  "strength_score": 0.82,
+  "risk_score": 0.61,
+  "overall_confidence": 0.75,
+  "strengths": [
+    "Long-term NNN lease",
+    "Strong FL logistics tailwinds",
+    "Institutional-grade bulk size"
+  ],
+  "watch_items": [
+    "Lease term remaining (years left?)",
+    "Tenant credit rating",
+    "Re-leasing feasibility if vacated"
+  ],
+  "executive_summary": "A 950K SF stabilized single-tenant industrial asset in Florida represents an institutional-grade logistics investment with estimated valuation between $123M and $147M depending on tenant credit, lease term remaining, and submarket positioning."
+}</code></pre>
+        </div>
+      </div>
+
+      <!-- 7. Action Plan Object -->
+      <div class="example-output">
+        <button class="example-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+          <span>🔁 Action Plan Object — Execution Layer</span>
+          <span class="arrow">&#9660;</span>
+        </button>
+        <div class="example-body">
+          <pre><code>{
+  "object_type": "ActionPlanObject",
+  "next_steps": [
+    "verify lease term remaining",
+    "verify tenant credit rating",
+    "pull 900K+ SF comps (FL industrial)",
+    "stress test cap rate expansion +100-150bps",
+    "analyze insurance trend year-over-year"
+  ],
+  "skills_to_execute": [
+    "comp_analyzer",
+    "debt_analyzer",
+    "tax_assessor",
+    "investor"
+  ]
+}</code></pre>
+        </div>
+      </div>
+
+      <div class="output-cta">
+        <p>7 objects. Machine-usable. Auditable. Composable. Final.<br>
+          <strong>This is not a dataset row. This is a bankable intelligence package.</strong></p>
       </div>
     </div>
   </section>

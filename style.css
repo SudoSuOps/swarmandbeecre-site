@@ -609,7 +609,51 @@ section h2 {
 .code-block.active { display: block; }
 
 /* ═══ REAL OUTPUT ═══ */
-.output { padding: 80px 24px; }
+.output { padding: 80px 24px; background: var(--bg-2); }
+
+.output-scenario {
+  text-align: center;
+  color: var(--text);
+  font-size: 1rem;
+  margin: -32px auto 40px;
+  padding: 12px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  display: inline-block;
+  width: auto;
+}
+
+.output .section-inner { text-align: center; }
+.output .example-output { text-align: left; }
+
+.example-note {
+  color: var(--text-3);
+  font-size: 0.8rem;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  line-height: 1.5;
+}
+
+.output-cta {
+  text-align: center;
+  margin-top: 40px;
+  padding: 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.output-cta p {
+  color: var(--text-2);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.output-cta strong {
+  color: var(--accent);
+}
 
 /* ═══ PRICING ═══ */
 .pricing {
