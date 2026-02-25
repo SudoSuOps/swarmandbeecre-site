@@ -73,12 +73,8 @@ code, pre {
 }
 
 .logo-icon {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  color: white;
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-weight: 800;
-  font-size: 0.85rem;
+  font-size: 1.4rem;
+  line-height: 1;
 }
 
 .logo-cre { color: var(--accent); }
@@ -136,12 +132,96 @@ code, pre {
   background-clip: text;
 }
 
+.hero-roi {
+  color: var(--accent);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  letter-spacing: 0.01em;
+}
+
 .hero-sub {
   color: var(--text-2);
   font-size: 1.15rem;
   margin-bottom: 40px;
   line-height: 1.7;
 }
+
+/* Dials footnote */
+.dials-note {
+  position: relative;
+  border-bottom: 1px dashed var(--text-3);
+  cursor: help;
+}
+.dials-note::after {
+  content: attr(data-note);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--surface-2);
+  color: var(--text);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  border: 1px solid var(--border);
+  z-index: 10;
+}
+.dials-note:hover::after { opacity: 1; }
+
+/* Example Output */
+.example-output {
+  max-width: 700px;
+  margin: 32px auto 0;
+}
+.example-toggle {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  padding: 12px 20px;
+  color: var(--text-2);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+.example-toggle:hover { border-color: var(--primary); color: var(--text); }
+.example-toggle .arrow { transition: transform 0.2s; }
+.example-toggle.open .arrow { transform: rotate(180deg); }
+.example-toggle.open { border-radius: var(--radius-sm) var(--radius-sm) 0 0; }
+.example-body {
+  display: none;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  padding: 20px;
+  overflow-x: auto;
+}
+.example-body.open { display: block; }
+.example-body pre {
+  font-size: 0.8rem;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+.example-body h5 {
+  font-size: 0.78rem;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 16px 0 8px;
+}
+.example-body h5:first-child { margin-top: 0; }
 
 /* Search Box */
 .search-box {
@@ -527,6 +607,9 @@ section h2 {
 }
 
 .code-block.active { display: block; }
+
+/* ═══ REAL OUTPUT ═══ */
+.output { padding: 80px 24px; }
 
 /* ═══ PRICING ═══ */
 .pricing {

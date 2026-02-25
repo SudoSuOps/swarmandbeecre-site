@@ -16,7 +16,7 @@
   <nav class="nav">
     <div class="nav-inner">
       <a href="#" class="nav-logo">
-        <span class="logo-icon">S&B</span>
+        <span class="logo-icon">🐝</span>
         <span class="logo-text">Swarm & Bee <span class="logo-cre">CRE</span></span>
       </a>
       <div class="nav-links">
@@ -34,7 +34,8 @@
   <section id="hero" class="hero">
     <div class="hero-inner">
       <div class="hero-badge">Live on Cloudflare Edge &middot; 300+ Cities</div>
-      <h1>CRE Intelligence<br><span class="hero-accent">at Scale</span></h1>
+      <h1>🐝 CRE Intelligence<br><span class="hero-accent">at Scale</span></h1>
+      <p class="hero-roi">ROI = Real Objects Intelligence: actionable, timestamped intelligence objects — not stale datasets.</p>
       <p class="hero-sub">One query. Six subsystems. Full intelligence package.<br>
         19 AI skills, semantic memory, 50 state experts, event machine.</p>
 
@@ -58,19 +59,19 @@
   <section id="stats" class="stats">
     <div class="stats-inner">
       <div class="stat" data-target="19">
-        <span class="stat-num" data-count="0">0</span>
+        <span class="stat-num">19</span>
         <span class="stat-label">AI Skills</span>
       </div>
       <div class="stat" data-target="50">
-        <span class="stat-num" data-count="0">0</span>
+        <span class="stat-num">50</span>
         <span class="stat-label">State Experts</span>
       </div>
       <div class="stat" data-target="22">
-        <span class="stat-num" data-count="0">0</span>
+        <span class="stat-num">22</span>
         <span class="stat-label">Event Types</span>
       </div>
       <div class="stat" data-target="300">
-        <span class="stat-num" data-count="0">0</span>
+        <span class="stat-num">300+</span>
         <span class="stat-label">Edge Cities</span>
       </div>
     </div>
@@ -81,7 +82,7 @@
     <div class="section-inner">
       <h2>How It Works</h2>
       <p class="section-sub">Traditional CRE: 200 cold calls/day, manual comp pulls, hand-written IC memos.<br>
-        SwarmCRE: one query &rarr; full intelligence package &rarr; 2M dials/day at edge speed.</p>
+        SwarmCRE: one query &rarr; full intelligence package &rarr; <span class="dials-note" data-note="19 skills &times; parallel edge inference &times; 300+ cities = theoretical throughput">2M dials/day</span> at edge speed.</p>
       <div class="flow">
         <div class="flow-step">
           <div class="flow-num">1</div>
@@ -120,7 +121,8 @@
   <section id="api" class="api">
     <div class="section-inner">
       <h2>API Quick Start</h2>
-      <p class="section-sub">One endpoint. Full intelligence package. No SDK required.</p>
+      <p class="section-sub">One endpoint. Full intelligence package. No SDK required.<br>
+        <code style="font-size:0.8em">router.swarmandbee.com</code> = public/basic. <code style="font-size:0.8em">api.router.swarmandbee.com</code> = authenticated + metered.</p>
       <div class="code-tabs">
         <button class="code-tab active" data-lang="curl">cURL</button>
         <button class="code-tab" data-lang="python">Python</button>
@@ -160,6 +162,98 @@ console.log(`Parsed: ${JSON.stringify(data.parsed)}`);
 console.log(`Market: ${data.market_context?.label}`);
 console.log(`Skills: ${data.skills.recommended}`);
 console.log(`Latency: ${data.latency_ms}ms`);</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ REAL OUTPUT ═══ -->
+  <section id="output" class="output">
+    <div class="section-inner">
+      <h2>Real Output</h2>
+      <p class="section-sub">What you actually get back. Schema-validated Intelligence Objects — not summaries, not chat. Structured, storable, trainable.</p>
+
+      <div class="example-output">
+        <button class="example-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+          Asset Intelligence Object — 85K SF Warehouse, Alliance TX
+          <span class="arrow">&#9660;</span>
+        </button>
+        <div class="example-body">
+          <pre><code>{
+  "object_type": "AssetIntelligenceObject",
+  "asset_type": "infill_warehouse",
+  "address": "Alliance TX",
+  "sf": 85000,
+  "year_built": 2019,
+  "clear_height_ft": 32,
+  "dock_doors": 12,
+  "trailer_parking": 40,
+  "rail_served": false,
+  "sprinkler": "ESFR",
+  "zoning": "industrial",
+  "asking_price": 8500000,
+  "price_psf": 100.00,
+  "cap_rate": 0.065,
+  "noi": 552500,
+  "occupancy": 1.0,
+  "tenant": "FedEx Ground",
+  "lease_type": "NNN",
+  "lease_term_remaining_months": 62,
+  "annual_escalation": 0.025,
+  "market_rent_psf": 7.25,
+  "vacancy_market": 0.038,
+  "tax_rate": 0.0195,
+  "insurance_psf": 0.45,
+  "cam_psf": 1.10,
+  "debt_available": true,
+  "ltv_max": 0.65,
+  "rate_indication": 0.0625,
+  "hedera_timestamp": "2025-02-24T18:32:01.443Z",
+  "confidence": 0.94,
+  "source_skill": "broker_senior"
+}</code></pre>
+        </div>
+      </div>
+
+      <div class="example-output" style="margin-top:12px">
+        <button class="example-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+          Market Snapshot Object — Dallas-Fort Worth Industrial
+          <span class="arrow">&#9660;</span>
+        </button>
+        <div class="example-body">
+          <pre><code>{
+  "object_type": "MarketSnapshotObject",
+  "market": "Dallas-Fort Worth",
+  "submarket": "Alliance / North Fort Worth",
+  "asset_class": "industrial",
+  "rent_range_nnn_psf": [6.50, 9.75],
+  "vacancy_pct": 3.8,
+  "absorption_sf_ytd": 12400000,
+  "deliveries_sf_ytd": 8200000,
+  "cap_rate_range": [5.5, 7.0],
+  "market_heat": 87,
+  "tier": 1,
+  "population_growth_yoy": 0.023,
+  "job_growth_yoy": 0.031,
+  "major_employers": [
+    "Amazon", "FedEx", "BNSF Railway",
+    "Bell Helicopter", "Lockheed Martin"
+  ],
+  "infrastructure": {
+    "interstate": ["I-35W", "SH-170", "US-287"],
+    "rail": "BNSF Alliance Intermodal",
+    "airport": "Fort Worth Alliance Airport (AFW)",
+    "port_proximity_mi": 280
+  },
+  "tax_environment": {
+    "property_tax_rate": 0.0195,
+    "income_tax": false,
+    "incentive_zones": ["Alliance TAD", "Haslet TIF"]
+  },
+  "hedera_timestamp": "2025-02-24T18:32:01.443Z",
+  "confidence": 0.91,
+  "source_skill": "market_report"
+}</code></pre>
+        </div>
       </div>
     </div>
   </section>
@@ -213,7 +307,7 @@ console.log(`Latency: ${data.latency_ms}ms`);</code></pre>
         <div class="credit-row"><span>Basic search</span><span>1 credit</span></div>
         <div class="credit-row"><span>Deep search (per skill)</span><span>+2 credits</span></div>
         <div class="credit-row"><span>Skill execution</span><span>2 credits</span></div>
-        <div class="credit-row"><span>Cook (AI inference)</span><span>1 credit</span></div>
+        <div class="credit-row"><span>Cook (AI inference / model call)</span><span>1 credit</span></div>
         <div class="credit-row"><span>Memory search</span><span>1 credit</span></div>
         <div class="credit-row"><span>Event/entity query</span><span>0.5 credits</span></div>
       </div>
@@ -225,7 +319,8 @@ console.log(`Latency: ${data.latency_ms}ms`);</code></pre>
     <div class="section-inner">
       <h2>On-Chain Intelligence</h2>
       <p class="section-sub">Every Intelligence Object timestamped on Hedera Consensus Service.<br>
-        HCS-10 OpenConvAI compliant. Agent-to-agent communication on public ledger.</p>
+        HCS-10 OpenConvAI compliant. Agent-to-agent communication on public ledger.<br>
+        Every ROI object is auditable and replayable — receipts for agents.</p>
       <div class="chain-grid">
         <div class="chain-card">
           <h3>HCS-10 Protocol</h3>
